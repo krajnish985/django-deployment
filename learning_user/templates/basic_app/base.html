@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--  -->
+<!-- media is not a defined tag like static -->
+{%load static%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-green bg-dark">
+    <!-- <nav class "navbar navbar-default navbar-static-top"> -->
+    <a clas="navbar-brand" href="{%url 'index'%}">Djnago</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class=" navbar-nav">
+
+          <li class="nav-item"><a class="nav-link" href="{%url 'basic_app:registeration'%}">Registeration</a> </li>
+          <li class="nav-item" ><a class="nav-link" href="{%url 'admin:index'%}">Admin</a> </li>
+          <!-- ADMIN:INDEX IS DEFAULT WAY TO USE RELATIVE URL TO GO TO ADMIN PAGE -->
+
+          {%if user.is_authenticated%}
+          <li class="nav-item"><a class="nav-link" href="{%url 'logout'%}">Logout</a></li>
+          <img src="{% static 'image/image5.jpg'%}" style="height:30px" style="width:30px">
+          {%else%}
+          <li class ="nav-item"><a class="nav-link" href="{%url 'basic_app:login'%}">Login</a></li>
+
+          {%endif%}
+        </ul>
+      </div>
+    </nav>
+   <div class="container">
+    {%block body_block%}
+    <h1>THIS IS BASE HTML CODE</h1>
+    {%endblock%}
+   </div>
+  </body>
+</html>
